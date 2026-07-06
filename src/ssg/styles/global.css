@@ -115,7 +115,7 @@ article h1 {
 article time {
 	display: block;
 	color: #888;
-	margin-bottom: var(--lh);
+	margin-bottom: 0.5rem;
 }
 
 code,
@@ -212,4 +212,27 @@ code {
 
 .friends-list a:hover {
 	text-decoration: underline;
+}
+
+.tag {
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+}
+
+.tag a {
+	color: #888;
+	text-decoration: none;
+}
+
+.tag a:hover {
+	text-decoration: underline;
+}
+
+.tag-list {
+	list-style: none;
+	padding: 0;
+}
+
+.tag-list li {
+	margin-bottom: 0.5em;
 }

@@ -3,6 +3,7 @@ export interface Post {
 	title: string; // frontmatter.title
 	description: string; // frontmatter.description
 	publishDate: Date; // frontmatter.publishDate
+	tag: string;
 	html: string; // markdown-it rendered body HTML
 }
 

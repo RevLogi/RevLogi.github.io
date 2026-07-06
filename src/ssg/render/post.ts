@@ -11,6 +11,7 @@ export function renderPost(post: Post): string {
 		`<article>
 <h1>${post.title}</h1>
 <time datetime="${post.publishDate.toISOString()}">${formatDate(post.publishDate)}</time>
+${post.tag ? `<p class="tag"><a href="/tags/${post.tag}/">#${post.tag}</a></p>` : ""}
 <div class="prose">${post.html}</div>
 </article>`,
 		false,

@@ -77,6 +77,7 @@ export async function parsePost(
 		title: String(fm.title ?? ""),
 		description: String(fm.description ?? ""),
 		publishDate: toDate(fm.publishDate),
+		tag: String(fm.tag ?? ""),
 		html,
 	};
 }

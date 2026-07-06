@@ -2,6 +2,7 @@
 title: "Proof of Sylvester's Rank Inequality"
 description: "This post is for testing the draft post functionality"
 publishDate: "23 October 2025"
+tag: math
 ---
 $$\operatorname{rank}(AB) \ge \operatorname{rank}(A) + \operatorname{rank}(B) - n$$
 

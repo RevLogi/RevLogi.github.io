@@ -7,3 +7,5 @@ declare module "markdown-it-texmath" {
 	const texmath: MarkdownIt.PluginWithOptions<TexmathOptions>;
 	export default texmath;
 }
+
+declare module "markdown-it-footnote";

@@ -2,6 +2,7 @@
 title: "Gitlet"
 description: "document the my implementation of gitlet"
 publishDate: "12 December 2025"
+tag: software
 ---
 
 The documentation below does not strictly follow the standard design document template CS61b provides. Instead, I have documented specific problems and implementation details that were particularly meaningful to my understanding of the system.

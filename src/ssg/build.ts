@@ -8,6 +8,7 @@ import { renderIndex, renderPost } from "./render/post";
 import { renderAbout, renderFriends } from "./render/pages";
 import { scanPosts } from "./scan";
 import type { Post } from "./types";
+import { renderTagPage, renderTagsIndex } from "./render/tags";
 
 // =====
 // RevLogi SSG — data processing pipeline
@@ -48,6 +49,21 @@ export async function buildAll(): Promise<number> {
 	for (const post of posts) {
 		pages.set(`/posts/${post.slug}/`, renderPost(post)); // one page per post
 	}
+
+	// Tag pages
+	const tagMap = new Map<string, Post[]>();
+	for (const post of posts) {
+		if (!post.tag) continue;
+		const list = tagMap.get(post.tag) ?? [];
+		list.push(post);
+		tagMap.set(post.tag, list);
+	}
+	const tagCounts = new Map<string, number>();
+	for (const [tag, list] of tagMap) {
+		tagCounts.set(tag, list.length);
+		pages.set(`/tags/${tag}/`, renderTagPage(tag, list));
+	}
+	pages.set("/tags/", renderTagsIndex(tagCounts));
 
 	// ---- 4. EMIT -----
 	// Input: Map<URL path, HTML string>
