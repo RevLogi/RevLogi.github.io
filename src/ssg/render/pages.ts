@@ -5,7 +5,9 @@ export function renderAbout(): string {
 		{ title: "About" },
 		`<h1>About</h1>
 <div class="prose" style="max-width:none">
-<p>Hi, I'm a first-year student at USTB and currently learning the basics of computer science. Hope to make some interesting stuff and share what I learnt here. You can find me on <a href="https://github.com/revlogi">github</a> or <a href="https://www.zhihu.com/people/corrupt-huan-ying">zhihu</a>.</p>
+<p>Hi, I'm an undergraduate student at USTB, just getting started with computer science and programming. I hope to build some interesting things and share what I learn along the way.</p>
+<p>You can find me on <a href="https://github.com/revlogi">github</a> or <a href="https://www.zhihu.com/people/corrupt-huan-ying">zhihu</a>.</p>
+<p>Most posts begin with my own ideas and rough drafts, with substantial help from AI in shaping the final text.</p>
 </div>`,
 	);
 }
