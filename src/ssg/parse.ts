@@ -13,7 +13,7 @@ let highlighter: Awaited<ReturnType<typeof createHighlighter>> | null = null;
 export async function createMarkdown(): Promise<MarkdownIt> {
 	if (!highlighter) {
 		highlighter = await createHighlighter({
-			themes: ["github-light", "dracula"],
+			themes: ["vitesse-light", "vitesse-dark"],
 			langs: ["bash", "js", "ts", "python", "rust", "c", "cpp", "css", "html", "json", "diff"],
 		});
 	}
@@ -27,7 +27,7 @@ export async function createMarkdown(): Promise<MarkdownIt> {
 				try {
 					return highlighter.codeToHtml(code, {
 						lang,
-						themes: { light: "github-light", dark: "dracula" },
+						themes: { light: "vitesse-light", dark: "vitesse-dark" },
 					});
 				} catch {
 					// fallback if lang not supported
