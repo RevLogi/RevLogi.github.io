@@ -17,8 +17,9 @@ export function renderFriends(): string {
 		{ title: "Friends" },
 		`<h1>Friends</h1>
 <ul class="friends-list">
-  <li><a href="https://wdlin233.github.io">wdlin</a></li>
-  <li><a href="https://siriuns.netlify.app">Siriuns</a></li>
+  <li><a href="https://wdlin233.github.io"><span class="friend-name">wdlin</span><span class="friend-domain">wdlin233.github.io</span></a></li>
+  <li><a href="https://siriuns.netlify.app"><span class="friend-name">Siriuns</span><span class="friend-domain">siriuns.netlify.app</span></a></li>
+	<li><a href="https://wamingmo.github.io"><span class="friend-name">wamingmo</span><span class="friend-domain">https://wamingmo.github.io</span></a></li>
 </ul>`,
 	);
 }
@@ -27,7 +28,7 @@ export function renderLinks(html: string): string {
 	return renderLayout(
 		{ title: "Links" },
 		`<h1>Links</h1>
-<div class="prose" style="max-width:none">
+<div class="prose links-page">
 ${html}
 </div>`,
 	);

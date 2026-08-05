@@ -1,3 +1,5 @@
+A collection of blog posts I've enjoyed and found useful.
+
 ## Learn Programming
 
 - [Fantastic Learning Resources - matklad](https://matklad.github.io/2023/08/06/fantastic-learning-resources.html)
