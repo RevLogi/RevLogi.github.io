@@ -9,5 +9,6 @@ export interface Post {
 
 export interface PageMeta {
 	title: string;
+	path: string;
 	description?: string;
 }

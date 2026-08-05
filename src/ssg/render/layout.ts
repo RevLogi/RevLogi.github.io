@@ -4,7 +4,21 @@ import type { PageMeta } from "../types";
 // renderLayout: HTML shell for all pages.
 // Input: meta (<head> data) + body (page HTML string)
 // Output: complete HTML document string
-export function renderLayout(meta: PageMeta, body: string, showBottomLinks = true): string {
+export function renderLayout(meta: PageMeta, body: string): string {
+	const canonicalUrl = `${siteConfig.url}${meta.path}`;
+	const navItems = [
+		["About", "/about/"],
+		["Friends", "/friends/"],
+		["Links", "/links/"],
+		["Tags", "/tags/"],
+		["RSS", "/rss.xml"],
+	]
+		.map(([label, path]) => {
+			const current = meta.path === path ? ' aria-current="page"' : "";
+			return `<a href="${path}"${current}>${label}</a>`;
+		})
+		.join("");
+
 	return `<!doctype html>
 <html lang="${siteConfig.lang}">
 <head>
@@ -12,7 +26,7 @@ export function renderLayout(meta: PageMeta, body: string, showBottomLinks = tru
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>${meta.title} • ${siteConfig.title}</title>
 <meta name="description" content="${meta.description ?? siteConfig.description}"/>
-<link rel="canonical" href="${siteConfig.url}"/>
+<link rel="canonical" href="${canonicalUrl}"/>
 <link rel="icon" href="/so.jpg" type="image/jpeg"/>
 <link rel="apple-touch-icon" href="/so.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,12 +36,13 @@ export function renderLayout(meta: PageMeta, body: string, showBottomLinks = tru
 <link rel="alternate" type="application/rss+xml" title="${siteConfig.title}" href="/rss.xml"/>
 </head>
 <body>
-<header><a href="/">${siteConfig.title}</a></header>
+<header class="site-header">
+<a class="site-title" href="/">${siteConfig.title}</a>
+<nav class="site-nav" aria-label="Primary navigation">${navItems}</nav>
+</header>
 <main>
 ${body}
 </main>
-${showBottomLinks ? `<nav class="bottom-links"><a href="/about/">About</a><a href="/friends/">Friends</a><a href="/links/">Links</a><a href="/tags/">Tags</a></nav>` : ""}
-<footer></footer>
 </body>
 </html>`;
 }

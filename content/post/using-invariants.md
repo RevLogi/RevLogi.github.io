@@ -1,6 +1,6 @@
 ---
 title: "Using Invariants"
-description: "Deriving C interfaces and implementations from their invariants"
+description: "Reconstructing a C exception interface by identifying the invariant behind its control flow"
 publishDate: "5 August 2026"
 tag: software
 ---

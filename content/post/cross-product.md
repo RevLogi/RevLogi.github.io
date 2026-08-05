@@ -1,6 +1,6 @@
 ---
 title: "Understand Cross Product"
-description: "a quick note on cross product"
+description: "Deriving the cross product from determinants and interpreting it through area and volume"
 publishDate: "11 January 2026"
 tag: math
 ---
@@ -51,4 +51,3 @@ $$
 If the volume is 0, the "height" is 0. This means the vector $\vec{r} = (x, y, z)$ lies flat in the same plane spanned by $\vec{v}$ and $\vec{w}$.
 
 Thus, this equation defines the **plane passing through the origin** spanned by vectors $\vec{v}$ and $\vec{w}$.
-

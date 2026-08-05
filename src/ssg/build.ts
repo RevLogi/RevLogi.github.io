@@ -50,8 +50,14 @@ export async function buildAll(): Promise<number> {
 	pages.set("/about/", renderAbout());
 	pages.set("/friends/", renderFriends());
 	pages.set("/links/", renderLinks(linksHtml));
-	for (const post of posts) {
-		pages.set(`/posts/${post.slug}/`, renderPost(post)); // one page per post
+	for (const [index, post] of posts.entries()) {
+		pages.set(
+			`/posts/${post.slug}/`,
+			renderPost(post, {
+				newer: posts[index - 1],
+				older: posts[index + 1],
+			}),
+		); // one page per post
 	}
 
 	// Tag pages

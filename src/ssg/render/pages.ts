@@ -2,7 +2,7 @@ import { renderLayout } from "./layout";
 
 export function renderAbout(): string {
 	return renderLayout(
-		{ title: "About" },
+		{ title: "About", path: "/about/" },
 		`<h1>About</h1>
 <div class="prose" style="max-width:none">
 <p>Hi, I'm an undergraduate student at USTB, just getting started with computer science and programming. I hope to build some interesting things and share what I learn along the way.</p>
@@ -14,7 +14,7 @@ export function renderAbout(): string {
 
 export function renderFriends(): string {
 	return renderLayout(
-		{ title: "Friends" },
+		{ title: "Friends", path: "/friends/" },
 		`<h1>Friends</h1>
 <ul class="friends-list">
   <li><a href="https://wdlin233.github.io"><span class="friend-name">wdlin</span><span class="friend-domain">wdlin233.github.io</span></a></li>
@@ -26,7 +26,7 @@ export function renderFriends(): string {
 
 export function renderLinks(html: string): string {
 	return renderLayout(
-		{ title: "Links" },
+		{ title: "Links", path: "/links/" },
 		`<h1>Links</h1>
 <div class="prose links-page">
 ${html}

@@ -1,6 +1,6 @@
 ---
 title: "Gitlet"
-description: "document the my implementation of gitlet"
+description: "Implementation notes on building Gitlet, a small Git-like version control system"
 publishDate: "12 December 2025"
 tag: software
 ---

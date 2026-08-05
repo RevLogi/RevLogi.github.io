@@ -1,6 +1,6 @@
 ---
 title: "Proof of Sylvester's Rank Inequality"
-description: "This post is for testing the draft post functionality"
+description: "Three proofs of Sylvester's rank inequality using block matrices, normal forms, and linear maps"
 publishDate: "23 October 2025"
 tag: math
 ---
