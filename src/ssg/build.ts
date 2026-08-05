@@ -4,11 +4,11 @@ import { dirname, join } from "node:path";
 import { siteConfig } from "./config";
 import { sortPosts } from "./date";
 import { createMarkdown, parsePost } from "./parse";
+import { renderAbout, renderFriends, renderLinks } from "./render/pages";
 import { renderIndex, renderPost } from "./render/post";
-import { renderAbout, renderFriends } from "./render/pages";
+import { renderTagPage, renderTagsIndex } from "./render/tags";
 import { scanPosts } from "./scan";
 import type { Post } from "./types";
-import { renderTagPage, renderTagsIndex } from "./render/tags";
 
 // =====
 // RevLogi SSG — data processing pipeline
@@ -32,6 +32,9 @@ export async function buildAll(): Promise<number> {
 	// Input: rawFrontmatter (yaml string) + rawBody (markdown string)
 	// Output: Post[] = { slug, title, publishDate, draft, html (rendered) }
 	const md = await createMarkdown();
+	const linksMarkdown = await Bun.file("content/page/links.md").text();
+	const linksHtml = md.render(linksMarkdown);
+
 	let posts: Post[] = [];
 	for (const doc of docs) {
 		const post = await parsePost(doc, md);
@@ -46,6 +49,7 @@ export async function buildAll(): Promise<number> {
 	pages.set("/", renderIndex(posts)); // home = flat post list
 	pages.set("/about/", renderAbout());
 	pages.set("/friends/", renderFriends());
+	pages.set("/links/", renderLinks(linksHtml));
 	for (const post of posts) {
 		pages.set(`/posts/${post.slug}/`, renderPost(post)); // one page per post
 	}

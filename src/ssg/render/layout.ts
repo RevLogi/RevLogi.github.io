@@ -26,7 +26,7 @@ export function renderLayout(meta: PageMeta, body: string, showBottomLinks = tru
 <main>
 ${body}
 </main>
-${showBottomLinks ? `<nav class="bottom-links"><a href="/about/">About</a><a href="/friends/">Friends</a><a href="/tags/">Tags</a></nav>` : ""}
+${showBottomLinks ? `<nav class="bottom-links"><a href="/about/">About</a><a href="/friends/">Friends</a><a href="/links/">Links</a><a href="/tags/">Tags</a></nav>` : ""}
 <footer></footer>
 </body>
 </html>`;

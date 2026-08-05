@@ -1,16 +1,19 @@
 import { basename, dirname, relative, sep } from "node:path";
-import type { Post } from "./types";
+
+interface ScannedPost {
+	slug: string;
+	rawFrontmatter: string;
+	rawBody: string;
+}
 
 // scanPosts: reads content/post/**/*.md, splits frontmatter from body.
 // Output: a Post skeleton (body still raw markdown string)
-export async function scanPosts(): Promise<Array<Omit<Post, "html"> & { rawBody: string }>> {
+export async function scanPosts(): Promise<ScannedPost[]> {
 	const pattern = new Bun.Glob("content/post/**/*.md");
 	const files: string[] = [];
 	for await (const path of pattern.scan()) files.push(path);
 
-	const docs: Array<
-		Omit<Post, "html" | "publishDate" | "draft"> & { rawFrontmatter: string; rawBody: string }
-	> = [];
+	const docs: ScannedPost[] = [];
 
 	for (const filePath of files) {
 		const raw = await Bun.file(filePath).text();
@@ -22,7 +25,7 @@ export async function scanPosts(): Promise<Array<Omit<Post, "html"> & { rawBody:
 			raw.startsWith("---") && fmEnd !== -1 ? raw.slice(fmEnd + 4).replace(/^\n/, "") : raw;
 
 		const slug = deriveSlug(filePath);
-		docs.push({ slug, filePath, rawFrontmatter, rawBody });
+		docs.push({ slug, rawFrontmatter, rawBody });
 	}
 	return docs;
 }

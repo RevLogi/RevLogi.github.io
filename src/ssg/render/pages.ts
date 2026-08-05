@@ -20,3 +20,13 @@ export function renderFriends(): string {
 </ul>`,
 	);
 }
+
+export function renderLinks(html: string): string {
+	return renderLayout(
+		{ title: "Links" },
+		`<h1>Links</h1>
+<div class="prose" style="max-width:none">
+${html}
+</div>`,
+	);
+}

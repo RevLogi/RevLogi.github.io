@@ -22,9 +22,10 @@ export async function createMarkdown(): Promise<MarkdownIt> {
 		linkify: true,
 		typographer: true,
 		highlight(str: string, lang: string): string {
+			const code = str.replace(/\n$/, "");
 			if (lang && highlighter) {
 				try {
-					return highlighter.codeToHtml(str, {
+					return highlighter.codeToHtml(code, {
 						lang,
 						themes: { light: "github-light", dark: "dracula" },
 					});
@@ -33,8 +34,7 @@ export async function createMarkdown(): Promise<MarkdownIt> {
 				}
 			}
 			const lines = md.utils
-				.escapeHtml(str)
-				.replace(/\n$/, "")
+				.escapeHtml(code)
 				.split("\n")
 				.map((l) => l || " ");
 			const wrapped = lines.map((l) => `<span class="line">${l}</span>`).join("\n");

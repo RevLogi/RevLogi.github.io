@@ -6,6 +6,7 @@ tag: math
 ---
 
 Let two vectors be defined as:
+
 $$
 \vec{v} = (v_1, v_2, v_3)
 $$
